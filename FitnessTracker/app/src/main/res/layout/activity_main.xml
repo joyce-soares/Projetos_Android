@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/btn_imc"
         android:background="@color/colorLightGray"
         android:paddingBottom="10dp"
         android:paddingEnd="12dp"
