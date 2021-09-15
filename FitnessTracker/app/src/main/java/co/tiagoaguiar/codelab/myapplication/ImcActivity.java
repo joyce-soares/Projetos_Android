@@ -1,11 +1,15 @@
 package co.tiagoaguiar.codelab.myapplication;
 
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,7 +52,22 @@ public class ImcActivity extends AppCompatActivity {
 
                 int imcResponseId = imcResponse(imc);
 
-                Toast.makeText(ImcActivity.this, imcResponseId, Toast.LENGTH_SHORT).show();
+                //aparecer dialog com aresposta para o user
+                AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
+                        .setTitle(getString(R.string.imc_response, imc))
+                        .setMessage(imcResponseId)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .create();
+                dialog.show();
+
+                //para fechar o teclado quando aparecer o dialog
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE); //IMM é o gerenciador do teclado
+                imm.hideSoftInputFromWindow(editHeight.getWindowToken(), 0);
+                imm.hideSoftInputFromWindow(editWeight.getWindowToken(), 0);
             }
         });
     }
