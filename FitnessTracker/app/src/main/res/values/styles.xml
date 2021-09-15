@@ -7,4 +7,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextViewForm">
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:layout_marginBottom">40dp</item>
+    </style>
+
+    <style name="ButtonForm">
+        <item name="android:background">@drawable/bg_button_accent</item>
+        <item name="android:layout_marginBottom">40dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="paddingStart">20dp</item>
+        <item name="paddingEnd">20dp</item>
+    </style>
+
+    <style name="EditTextForm">
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:layout_marginBottom">40dp</item>
+        <item name="android:maxLength">3</item>
+        <item name="android:inputType">number</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>
