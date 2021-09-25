@@ -11,14 +11,14 @@ A ideia é praticar os conhecimentos adquiridos com o Navigation Drawer </p>
 <div>
   <img align="center" height="512" width="265" src="https://i.ibb.co/pRq2HHm/1.png">
  </div>
- 
+ <br>
  
  <p>Tela de envio de email:</p><br>
  <div>
    <img align="center" height="512" width="265" src="https://i.ibb.co/M6NwKR6/2.png">
   </div>
   
-  
+  <br>
   <p>Tela da sessão Sobre:</p><br>
    <div>
      <img align="center" height="512" width="265" src="https://i.ibb.co/k6RDTCH/3.png">
