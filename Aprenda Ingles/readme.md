@@ -1,9 +1,7 @@
-<h2 align="center">App ATM Consultoria</h2>
+<h2 align="center">Aprenda Inglês</h2>
 
-<p>A ideia desse App e nós clicarmos em cima de uma imagem e ele executa o som em inglês.
-
-Então ao clicar em cima,por exemplo, de Cão, ele executa o som Dog.
-
+<p>A ideia desse App é clicar em cima de uma imagem e ele executa o som em inglês.
+Ao clicar em cima,por exemplo, de Cão, ele executa o som Dog.
 É a mesma coisa para números e vogais. </p>
 <p> Aprendendo a executar sons e fazer utilização de abas.</p>
 <br>
