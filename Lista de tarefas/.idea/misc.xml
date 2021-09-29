@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/drawable/ic_add_24.xml" value="0.27870370370370373" />
+        <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.27870370370370373" />
         <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/layout/activity_adicionar_tarefa.xml" value="0.3546875" />
         <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
         <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/layout/content_main.xml" value="0.3546875" />
         <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/layout/lista_tarefa_adapter.xml" value="0.33" />
+        <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/menu/menu_adicionar_tarefa.xml" value="0.18425925925925926" />
         <entry key="..\:/Projetos Android/AndroidGit/Lista de tarefas/app/src/main/res/menu/menu_main.xml" value="0.3546875" />
       </map>
     </option>

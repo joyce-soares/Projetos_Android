@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.joyce.listadetarefas.R;
 import com.joyce.listadetarefas.adapter.TarefaAdapter;
+import com.joyce.listadetarefas.helper.DbHelper;
 import com.joyce.listadetarefas.helper.RecyclerItemClickListener;
+import com.joyce.listadetarefas.helper.TarefaDAO;
 import com.joyce.listadetarefas.model.Tarefa;
 
 import android.view.Menu;
@@ -77,17 +79,10 @@ public class MainActivity extends AppCompatActivity {
     public void listarTarefas(){
 
         //Listar tarefas
-        Tarefa t1 = new Tarefa();
-        t1.setDescricao("Ir ao mercado");
-        listaTarefas.add(t1);
-        Tarefa t2 = new Tarefa();
-        t2.setDescricao("Ir a feira");
-        listaTarefas.add(t2);
-
-
+        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+        listaTarefas = tarefaDAO.listar();
 
          //   Exibe lista de tarefas no RecyclerView
-
 
         //Configurar um adapter
         tarefaAdapter = new TarefaAdapter(listaTarefas);
