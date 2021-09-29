@@ -24,28 +24,40 @@ public class MainActivity extends AppCompatActivity {
 
             //Criar tabela:
             database.execSQL(
-                    "CREATE TABLE IF NOT EXISTS pessoas(nome VARCHAR, idade VARCHAR)"
+                 "CREATE TABLE IF NOT EXISTS pessoas(id INTEGER PRIMARY KEY AUTOINCREMENT ,nome VARCHAR, idade VARCHAR)"
             );
 
+           // database.execSQL("DROP table pessoas");
+
             //Inserir dados:
-            database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Joyce', '25')");
-            database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Rafael', '26')");
-            database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Bryan', '8')");
+            //database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Ana', '55')");
+           // database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Rodrigo', '66')");
+           // database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Briana', '18')");
+
+            //Updadte de dados
+            database.execSQL("UPDATE pessoas SET nome = 'Joyce' WHERE id = 1");
+
+            //remover dados
+            database.execSQL("DELETE FROM pessoas WHERE id = 2");
 
             //Recuperar dados:
             Cursor cursor = database.rawQuery(
-                    "SELECT nome, idade FROM pessoas", null); //cursor armazena todods os dados para que se possa percorre-los
+                    "SELECT id, nome, idade FROM pessoas", null); //cursor armazena todods os dados para que se possa percorre-los
 
             //indices da tabela
             cursor.moveToFirst();
             int indiceNome = cursor.getColumnIndex("nome");
             int indiceIdade = cursor.getColumnIndex("idade");
+            int indiceId = cursor.getColumnIndex("id");
 
            // cursor.moveToFirst();
             while (cursor != null){
-                Log.i("RESULTADO - Nome: " , cursor.getString(indiceNome));
-                Log.i("RESULTADO - Idade: " , cursor.getString(indiceIdade));
 
+                String nome = cursor.getString(indiceNome);
+                String idade = cursor.getString(indiceIdade);
+                String id = cursor.getString(indiceId);
+
+                Log.i("RESULTADO - Nome: " , nome + "  Idade: " + idade + " ID: " + id );
                 cursor.moveToNext();
             }
 
