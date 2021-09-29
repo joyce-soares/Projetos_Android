@@ -46,12 +46,18 @@ public class TarefaDAO implements InterfaceTarefaDao {
 
     @Override
     public boolean atualizar(Tarefa tarefa) {
-        return false;
+
+
+
+        return true;
     }
 
     @Override
     public boolean deletar(Tarefa tarefa) {
-        return false;
+
+
+
+        return true;
     }
 
     @Override
