@@ -1,10 +1,12 @@
 package com.joyce.listadetarefas.activitys;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.joyce.listadetarefas.R;
 import com.joyce.listadetarefas.adapter.TarefaAdapter;
 import com.joyce.listadetarefas.helper.DbHelper;
@@ -26,6 +30,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerListaTarefas;
     private TarefaAdapter tarefaAdapter;
     private List<Tarefa> listaTarefas = new ArrayList<>();
+    private Tarefa tarefaSelecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 //Click normal apenas edita a tarefa
                 // 1 -> Recupera tarefa para edicao
-                Tarefa tarefaSelecionada = listaTarefas.get(position);
+                tarefaSelecionada = listaTarefas.get(position);
 
                 // 2 -> Envia a tarefa para tela adcionar tarefa
                 Intent intent = new Intent(MainActivity.this, AdicionarTarefaActivity.class);
@@ -64,7 +70,33 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLongItemClick(View view, int position) {
                 //Click longo faz a deleçao da tarefa
-                Log.i("Clique ", "onLongItemClick");
+                tarefaSelecionada = listaTarefas.get(position);
+                //tarefaDAO = new TarefaDAO(getApplicationContext());
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+
+                //Configura título e msg do alert:
+                dialog.setTitle("Confirmar exclusão");
+                dialog.setMessage("Deseja excluir a tarefa: " + tarefaSelecionada.getDescricao() + "?");
+
+                //Configura os botoes do alert:
+                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+                        if(tarefaDAO.deletar(tarefaSelecionada)){
+                            listarTarefas();
+                            Toast.makeText(getApplicationContext(), "Tarefa excluida com sucesso!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), "Não foi possível deletar tarefa.", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                });
+                dialog.setNegativeButton("Não", null);
+                dialog.create();
+                dialog.show();
             }
 
             @Override
@@ -107,27 +139,4 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 }

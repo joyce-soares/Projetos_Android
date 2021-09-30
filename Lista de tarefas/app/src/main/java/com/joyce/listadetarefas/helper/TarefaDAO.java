@@ -47,7 +47,18 @@ public class TarefaDAO implements InterfaceTarefaDao {
     @Override
     public boolean atualizar(Tarefa tarefa) {
 
+        ContentValues cv = new ContentValues(); //cv é os valores que queremos atualizar
+        cv.put("nome", tarefa.getDescricao());
 
+        try{
+            String[] args = { tarefa.getId().toString() };
+            escreve.update(DbHelper.TABELA_TAREFAS, cv, "id=?" , args );
+            Log.i("INFO", "Sucesso ao atualizar tarefa");
+
+        }catch (Exception e){
+            Log.i("INFO", "Erro ao atualizar tarefa" + e.getMessage());
+            return false;
+        }
 
         return true;
     }
@@ -55,8 +66,14 @@ public class TarefaDAO implements InterfaceTarefaDao {
     @Override
     public boolean deletar(Tarefa tarefa) {
 
+        try{
+            String[] args = { tarefa.getId().toString() };
+            escreve.delete(DbHelper.TABELA_TAREFAS,"id=?" , args );
 
-
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
         return true;
     }
 
