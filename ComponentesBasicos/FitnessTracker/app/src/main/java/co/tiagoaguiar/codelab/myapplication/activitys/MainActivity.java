@@ -1,4 +1,4 @@
-package co.tiagoaguiar.codelab.myapplication;
+package co.tiagoaguiar.codelab.myapplication.activitys;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,6 +18,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import co.tiagoaguiar.codelab.myapplication.model.MainItem;
+import co.tiagoaguiar.codelab.myapplication.interfaces.OnItemClickListener;
+import co.tiagoaguiar.codelab.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 

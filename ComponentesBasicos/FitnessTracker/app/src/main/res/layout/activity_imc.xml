@@ -13,7 +13,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:orientation="vertical"
-        tools:context=".ImcActivity">
+        tools:context=".activitys.ImcActivity">
 
         <TextView
             style="@style/TextViewForm"

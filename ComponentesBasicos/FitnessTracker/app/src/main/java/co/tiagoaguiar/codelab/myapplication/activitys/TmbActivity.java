@@ -1,8 +1,10 @@
-package co.tiagoaguiar.codelab.myapplication;
+package co.tiagoaguiar.codelab.myapplication.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import co.tiagoaguiar.codelab.myapplication.R;
 
 public class TmbActivity extends AppCompatActivity {
 

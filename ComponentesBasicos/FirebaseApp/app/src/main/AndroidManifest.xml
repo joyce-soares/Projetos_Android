@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.tiagoaguiar.codelab.myapplication">
+    package="com.joyce.firebaseapp">
 
     <application
         android:allowBackup="true"
@@ -8,13 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.FirebaseApp">
         <activity
-            android:name=".activitys.ListCalcActivity"
-            android:exported="true" />
-        <activity android:name=".activitys.TmbActivity" />
-        <activity android:name=".activitys.ImcActivity" />
-        <activity android:name=".activitys.MainActivity">
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

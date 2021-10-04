@@ -1,19 +1,21 @@
-package co.tiagoaguiar.codelab.myapplication;
+package co.tiagoaguiar.codelab.myapplication.activitys;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import co.tiagoaguiar.codelab.myapplication.R;
+import co.tiagoaguiar.codelab.myapplication.sqlhelper.SqlHelper;
 
 public class ImcActivity extends AppCompatActivity {
 
@@ -56,12 +58,26 @@ public class ImcActivity extends AppCompatActivity {
                 AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
                         .setTitle(getString(R.string.imc_response, imc))
                         .setMessage(imcResponseId)
-                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        })
-                        .create();
+                        .setPositiveButton(android.R.string.ok, (dialog1, which) -> {
+
+                        }).setNegativeButton("Salvar", (dialog12, which) -> {
+
+                            //cria um processo paralelo para nao travar a thread principal
+                            new Thread(() -> {
+                                long calcId = SqlHelper.getInstance(ImcActivity.this).addItem("IMC", imc);
+
+                                //volta para a thread principal
+                                runOnUiThread(() -> {
+                                    if(calcId > 0){
+                                        Toast.makeText(getApplicationContext(), "IMC regitrado com sucesso", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(ImcActivity.this, ListCalcActivity.class);
+                                        intent.putExtra("type", "imc");
+                                        startActivity(intent);
+                                    }
+                                });
+                            }).start();
+                        }).create();
+
                 dialog.show();
 
                 //para fechar o teclado quando aparecer o dialog
