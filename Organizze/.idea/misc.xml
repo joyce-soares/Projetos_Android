@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/layout/activity_login.xml" value="0.20462962962962963" />
+        <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/drawable/ic_email_24.xml" value="0.37083333333333335" />
+        <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/drawable/ic_lock_24.xml" value="0.37083333333333335" />
+        <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/drawable/ic_people_24.xml" value="0.37083333333333335" />
+        <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/layout/activity_cadastro.xml" value="0.33" />
+        <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/layout/intro_1.xml" value="0.34512820512820513" />
         <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/layout/intro_2.xml" value="0.34512820512820513" />
         <entry key="..\:/Projetos Android/AndroidGit/Organizze/app/src/main/res/layout/intro_3.xml" value="0.34512820512820513" />

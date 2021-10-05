@@ -19,36 +19,36 @@ public class MainActivity extends IntroActivity {
         setButtonNextVisible(false);
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.purple_200)
+                .background(R.color.lilas)
                 .fragment(R.layout.intro_1)
                 .build());
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.purple_200)
+                .background(R.color.lilas)
                 .fragment(R.layout.intro_2)
                 .build());
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.purple_200)
+                .background(R.color.lilas)
                 .fragment(R.layout.intro_3)
                 .build());
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.purple_200)
+                .background(R.color.lilas)
                 .fragment(R.layout.intro_4)
                 .build());
 
         addSlide(new FragmentSlide.Builder()
-                .background(R.color.white)
+                .background(R.color.lilas)
                 .fragment(R.layout.intro_cadastro)
                 .build());
     }
 
     public void btEntrar(View v){
-        //startActivity(new Intent(this, ));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     public void btCadastrar(View v){
-
+        startActivity(new Intent(this, CadastroActivity.class));
     }
 }
