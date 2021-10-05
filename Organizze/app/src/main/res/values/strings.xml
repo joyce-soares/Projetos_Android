@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Organizze</string>
+    <string name="titulo1">Organize suas contas de onde estiver</string>
+    <string name="descricao_1">Simples, grátis e fácil de usar</string>
+    <string name="titulo_2">Saiba para onde está indo seu dinheiro</string>
+    <string name="descricao_2">Categorizando seus lançamentos e vendo o destino de cada centavo</string>
+    <string name="titulo_3">Nunca mais esqueça de pagar uma conta</string>
+    <string name="descricao_3">Receba alertas quando quiser</string>
+    <string name="titulo_4">Tudo organizado, no celular ou computador</string>
+    <string name="descricao_4">Use no seu smartphone e acessando o Organizze pelo site</string>
+    <string name="cadastre">Cadastre sua conta grátis</string>
+    <string name="subtitle">Junte-se a mais de meio milhão de pessoas e comece já</string>
+    <string name="cadastre_se">cadastre-se</string>
+</resources>
