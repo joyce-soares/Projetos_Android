@@ -48,7 +48,7 @@ public class MainActivity extends IntroActivity {
         startActivity(new Intent(this, LoginActivity.class));
     }
 
-    public void btCadastrar(View v){
+    public void btCadastreSe(View v){
         startActivity(new Intent(this, CadastroActivity.class));
     }
 }

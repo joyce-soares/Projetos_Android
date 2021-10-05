@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_cadastrar" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_cadastre_se" />
 
     <TextView
         android:id="@+id/textView3"
@@ -40,19 +40,19 @@
         android:text="@string/subtitle"
         android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btn_cadastrar"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cadastre_se"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/btn_cadastrar"
+        android:id="@+id/btn_cadastre_se"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="30dp"
-        android:onClick="btCadastrar"
+        android:onClick="btCadastreSe"
         android:text="@string/cadastre_se"
         app:layout_constraintBottom_toTopOf="@+id/txt_entrar"
         app:layout_constraintEnd_toEndOf="parent"
