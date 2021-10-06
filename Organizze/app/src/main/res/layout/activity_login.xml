@@ -7,7 +7,7 @@
     tools:context=".activitys.LoginActivity">
 
     <Button
-        android:id="@+id/btn_entrar"
+        android:id="@+id/btn_login"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -26,7 +26,7 @@
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btn_entrar"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_login" />

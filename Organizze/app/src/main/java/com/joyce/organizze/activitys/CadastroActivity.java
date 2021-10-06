@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.joyce.organizze.R;
 import com.joyce.organizze.config.ConfiguracaoFirebase;
 import com.joyce.organizze.model.Usuario;
@@ -72,9 +75,23 @@ public class CadastroActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(this, "Sucesso ao cadastrar usuário!", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(this, "Erro ao cadastrar usuário", Toast.LENGTH_SHORT).show();
+
+                            String excecao = "";
+
+                            try{
+                                throw task.getException();
+                            }catch (FirebaseAuthWeakPasswordException e){
+                                excecao = "Digite uma senha mais forte!";
+                            }catch (FirebaseAuthInvalidCredentialsException e){
+                                excecao = "Endereço de email inválido!";
+                            }catch (FirebaseAuthUserCollisionException e){
+                                excecao = "Usuário já cadastrado!";
+                            }catch (Exception e){
+                                excecao = "Erro ao cadastrar usuário" + e.getMessage();
+                            }
+
+                            Toast.makeText(this, excecao, Toast.LENGTH_SHORT).show();
                         }
                     });
-
     }
 }
