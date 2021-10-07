@@ -3,6 +3,7 @@ package com.joyce.organizze.activitys;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -79,12 +80,10 @@ public class LoginActivity extends AppCompatActivity {
         autenticacao.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha())
                 .addOnCompleteListener(this, task -> {
 
-
                     if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        //FirebaseUser user = autenticacao.getCurrentUser();
-                        //updateUI(user);
-                        Toast.makeText(getApplicationContext(), "SUCESSO", Toast.LENGTH_SHORT).show();
+
+                       abrirTelaPrincipal();
+
                     } else {
 
                         String excecao ;
@@ -98,14 +97,19 @@ public class LoginActivity extends AppCompatActivity {
 
                         }catch (FirebaseAuthInvalidCredentialsException e){
                             excecao = "Senha incorreta!";
+
                         }catch (Exception e){
                             excecao = "Erro ao efetuar login!" + e.getMessage();
                             e.printStackTrace();
                         }
 
                         Toast.makeText(getApplicationContext(), excecao, Toast.LENGTH_SHORT).show();
-
                     }
                 });
+    }
+
+    public void abrirTelaPrincipal(){
+        startActivity(new Intent(this, PrincipalActivity.class));
+        finish();
     }
 }
