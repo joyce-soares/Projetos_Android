@@ -1,5 +1,6 @@
 package com.joyce.organizze.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,12 +19,13 @@ public class PrincipalActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
 
-    public void adicionarDespesa(View v){}
+    public void adicionarDespesa(View v){
+        startActivity(new Intent(this, DespesaActivity.class));
+    }
 
-
-    public void adicionarReceita(View v){}
+    public void adicionarReceita(View v){
+        startActivity(new Intent(this, ReceitaActivity.class));
+    }
 }

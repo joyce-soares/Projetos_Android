@@ -52,6 +52,7 @@
             app:fab_size="mini"
             android:onClick="adicionarReceita"
             android:src="@drawable/fab_add"
+            android:background="@color/colorSecundaryReceita"
             app:menu_colorNormal="@color/colorPrimaryDarkReceita"
             app:menu_colorPressed="@color/colorPrimaryDarkReceita"
             app:fab_label="Receita">

@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.joyce.organizze.R;
 import com.joyce.organizze.config.ConfiguracaoFirebase;
+import com.joyce.organizze.helper.Base64Custom;
 import com.joyce.organizze.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -73,6 +74,11 @@ public class CadastroActivity extends AppCompatActivity {
         autenticacao.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha())
                     .addOnCompleteListener(this, (task) -> {
                         if(task.isSuccessful()){
+
+                            String idUsuario = Base64Custom.codificarBase64(usuario.getEmail()); //idUsuario é o email dele em base64
+                            usuario.setIdUsuario(idUsuario);
+                            usuario.salvarUsuario();
+
                             finish();
                         }else {
 
