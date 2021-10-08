@@ -22,7 +22,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextNumberDecimal2"
+        android:id="@+id/editValorReceita"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editCategoriaReceita" />
 
     <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/fab_done"
+        android:id="@+id/fab_doneDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -94,6 +94,7 @@
         app:menu_colorNormal="@color/colorSecundaryReceita"
         android:background="@color/colorSecundaryReceita"
         app:fab_colorPressed="@color/colorSecundaryReceita"
+        android:onClick="salvarReceita"
         app:menu_fab_size="normal">
 
     </com.github.clans.fab.FloatingActionButton>

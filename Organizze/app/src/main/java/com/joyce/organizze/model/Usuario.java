@@ -71,8 +71,7 @@ public class Usuario {
 
         //salva o usuario no Db do firebase
         DatabaseReference db = ConfiguracaoFirebase.getFirebaseDb();
-        db.child("movimentacoes")
-                .child("usuarios")
+        db.child("usuarios")
                 .child(this.idUsuario)
                 .setValue(this);
 

@@ -53,6 +53,9 @@ dependencies {
     //floating action menu
     implementation 'com.github.clans:fab:1.6.4'
 
+    //calendar
+    implementation "com.github.prolificinteractive:material-calendarview:1.4.3"
+
 }
 
 apply plugin: 'com.google.gms.google-services'

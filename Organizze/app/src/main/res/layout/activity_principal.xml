@@ -10,6 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:elevation="0dp"
         android:theme="@style/Theme.Organizze.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
@@ -42,7 +43,8 @@
             app:fab_size="mini"
             app:menu_colorNormal="@color/colorPrimaryDarkDespesa"
             app:menu_colorPressed="@color/colorPrimaryDarkDespesa"
-            app:fab_label="Despesa">
+            app:fab_label="Despesa"
+            tools:ignore="UsingOnClickInXml">
         </com.github.clans.fab.FloatingActionButton>
 
         <com.github.clans.fab.FloatingActionButton
@@ -52,10 +54,9 @@
             app:fab_size="mini"
             android:onClick="adicionarReceita"
             android:src="@drawable/fab_add"
-            android:background="@color/colorSecundaryReceita"
             app:menu_colorNormal="@color/colorPrimaryDarkReceita"
-            app:menu_colorPressed="@color/colorPrimaryDarkReceita"
-            app:fab_label="Receita">
+            app:fab_label="Receita"
+            tools:ignore="UsingOnClickInXml">
         </com.github.clans.fab.FloatingActionButton>
     </com.github.clans.fab.FloatingActionMenu>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
