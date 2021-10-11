@@ -13,6 +13,7 @@ public class Movimentacoes {
     private String tipo;
     private String data;
     private Double valor;
+    private String id;
 
     public Movimentacoes() {
     }
@@ -55,6 +56,14 @@ public class Movimentacoes {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void salvarMovimentacao(String data){
