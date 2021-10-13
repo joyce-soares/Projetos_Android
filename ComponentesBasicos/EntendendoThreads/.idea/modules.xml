@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EntendendoThreads.iml" filepath="$PROJECT_DIR$/EntendendoThreads.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Entendendo_threads.iml" filepath="$PROJECT_DIR$/.idea/modules/Entendendo_threads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Entendendo_threads.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Entendendo_threads.app.iml" />
     </modules>
   </component>
 </project>
