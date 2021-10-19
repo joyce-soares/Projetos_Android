@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         button.setOnClickListener(v -> {
             
-            /*//TODO sem retrofit
+            /*//TODO recupera CEP SEM retrofit
             MyAsyncTask task = new MyAsyncTask();
             String urlApi = "https://blockchain.info/ticker";
             String cep = cepTxt.getText().toString();
@@ -78,73 +76,28 @@ public class MainActivity extends AppCompatActivity {
             //TODO COM retrofit recupera cep
             //recuperarCEPRetrofit();
 
-            //Todo recupera uma lista de fotos/posts
+            //Todo recupera uma lista de fotos/posts, requisicao GET
             //recuperarListaRetrofit();
 
             //TODO salva um post, requisicao POST
-            salvarPost();
+            //salvarPost();
+
+            //TODO atualiza um post, requisicao PUT e PATCH
+            //atualizarPost();
+
+            //TODO deleta um post, requisicao DELETE
+            deletarPost();
         });
     }
 
-    private void recuperarListaRetrofit(){
-
-        DataService service = retrofit.create(DataService.class);
-        //Call<List<Foto>> call = service.recuperarFotos();
-        Call<List<Post>> call = service.recuperarPosts();
-
-        call.enqueue(new Callback<List<Post>>() {
-            @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                if(response.isSuccessful()){
-                    //fotos = response.body();
-                    posts = response.body();
-
-                    for(int i=0; i< posts.size(); i++){
-                        Post post =posts.get(i);
-                        Log.d("Post: ", post.getTitle());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void recuperarCEPRetrofit(){
-
-        String cep = cepTxt.getText().toString();
-        CEPService cepService = retrofit.create(CEPService.class);
-        Call<CEP> call = cepService.recuperarCEP(cep);
-
-        call.enqueue(new Callback<CEP>() {
-            @Override
-            public void onResponse(Call<CEP> call, Response<CEP> response) {
-
-                if(response.isSuccessful()){
-                    CEP cep = response.body();
-                    textView.setText("Logradouro: " + cep.getLogradouro() + "\nBairro: " + cep.getBairro() + "/" + cep.getLocalidade());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CEP> call, Throwable t) {
-
-            }
-        }); //chamando o metodo enqueue automaticamente é gerada uma tarefa assincrona
-    }
-
-    /*//TODO sem retrofit
-    class MyAsyncTask extends AsyncTask<String, Void, String>{
+    //TODO recupera CEP SEM retrofit
+    class MyAsyncTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
 
             String urlApi = strings[0];  //utilizando essa string conseguimos criar uma conexao http
-            InputStream  inputStream = null;
+            InputStream inputStream = null;
             InputStreamReader inputStreamReader = null;
             StringBuffer buffer = new StringBuffer(); //ao utilizar StringBuffer é possivel montar linha a linha o reader. No final termos uma string grande com a resposta da requesicao
 
@@ -197,8 +150,62 @@ public class MainActivity extends AppCompatActivity {
 
             textView.setText(s);
         }
-    }*/
+    }
 
+    //TODO recupera CEP COM retrofit
+    private void recuperarCEPRetrofit(){
+
+        String cep = cepTxt.getText().toString();
+        CEPService cepService = retrofit.create(CEPService.class);
+        Call<CEP> call = cepService.recuperarCEP(cep);
+
+        call.enqueue(new Callback<CEP>() {
+            @Override
+            public void onResponse(Call<CEP> call, Response<CEP> response) {
+
+                if(response.isSuccessful()){
+                    CEP cep = response.body();
+                    textView.setText("Logradouro: " + cep.getLogradouro() + "\nBairro: " + cep.getBairro() + "/" + cep.getLocalidade());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CEP> call, Throwable t) {
+
+            }
+        }); //chamando o metodo enqueue automaticamente é gerada uma tarefa assincrona
+    }
+
+    //Todo recupera uma lista de fotos/posts, requisicao GET
+    private void recuperarListaRetrofit(){
+
+        DataService service = retrofit.create(DataService.class);
+        //Call<List<Foto>> call = service.recuperarFotos();
+        Call<List<Post>> call = service.recuperarPosts();
+
+        call.enqueue(new Callback<List<Post>>() {
+            @Override
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                if(response.isSuccessful()){
+                    //fotos = response.body();
+                    posts = response.body();
+
+                    for(int i=0; i< posts.size(); i++){
+                        Post post =posts.get(i);
+                        Log.d("Post: ", post.getTitle());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Post>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    //TODO salva um post, requisicao POST
     private void salvarPost(){
 
         Post post = new Post("10", "Meu novo Post", "rhkuijgt jht4lifn hgti nv");
@@ -221,6 +228,60 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
+
+            }
+        });
+    }
+
+    //TODO atualiza um post, requisicao PUT e PATCH
+    private void atualizarPost(){
+
+        Post post = new Post("1011", "Meu Post atualizado", "Corpo do post"); //se voce nao quiser atualizar todos os campos é só colocar o atributo como nulo e usar a requisicao PATCH, o PUT atualiza todos
+
+        DataService service = retrofit.create(DataService.class);
+        Call<Post> call = service.atualizarPost(1 ,post);
+
+        call.enqueue(new Callback<Post>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                if(response.isSuccessful()){
+                    Post post1 = response.body();
+                    textView.setText(
+                            "Codigo: " + response.code()
+                                    + " Id: " + post1.getId()
+                                    + " User Id: " + post1.getUserId()
+                                    + " Body: " + post1.getBody()
+                                    + " Titulo: " + post1.getTitle());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+
+            }
+        });
+    }
+
+    //TODO deleta um post, requisicao DELETE
+    private void deletarPost(){
+
+        DataService service = retrofit.create(DataService.class);
+        Call<Void> call = service.deletarPost(1);
+
+        call.enqueue(new Callback<Void>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+                if(response.isSuccessful()){
+                    textView.setText("Status: " + response.code());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
 
             }
         });
